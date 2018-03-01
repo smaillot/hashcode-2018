@@ -39,12 +39,12 @@ def read_input(input_file):
     
     with open('inputs/' + input_file + '.in', 'r') as reader:
         ## init params
-        input1, = read_line(reader)
+        params = read_line(reader)
         
         ## read array 
-        array = read_array(reader, input1)    
+        array = read_array(reader, rides)
     
-    return input1, array
+    return params, array
 
 def write_output(input, name, score, output):
 
@@ -54,7 +54,6 @@ def write_output(input, name, score, output):
 
     with open('outputs/' + input + '_' + name + '_' + str(score) + '.out', 'w') as f:
 
-        write_list(f, [len(output)])
         write_array(f, output)
 
 def display(solution, loaded_input):

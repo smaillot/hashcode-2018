@@ -26,7 +26,8 @@ if __name__ == '__main__':
     ''' This is where the fun begins'''
     
     # Loading input
-    loaded_input = Loaded_input(read_input(args.input))
+    params, array = read_input(args.input)
+    loaded_input = Loaded_input(params, array)
 
     ###########################
     ## Pre-processing
