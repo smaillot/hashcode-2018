@@ -9,6 +9,4 @@ from IO import *
 def compute_score(loaded_input, list_rides):
     ''' Computes the score of all rides orders '''
 
-
-    
-    return len(output)
+    return loaded_input.compute_score(list_rides)
