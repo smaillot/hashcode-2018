@@ -1,10 +1,12 @@
 import numpy as np
 from tqdm import trange
+#from loaded_input import *
 
 class BRKGA_solver:
 
-    def __init__(self, inputPb, generationSize, crossoverProba, eliteRate, mutantRate, chromosomeShape):
-        self.inputPb = inputPb
+    def __init__(self, fleetSize, nbRides, generationSize, crossoverProba, eliteRate, mutantRate, chromosomeShape):
+        self.fleetSize = fleetSize
+        self.nbRides = nbRides
         self.generationSize = generationSize
         self.crossoverProba = crossoverProba
         self.eliteSize = int(eliteRate * generationSize)
@@ -14,10 +16,25 @@ class BRKGA_solver:
 
     def decoder(self, ch):
         #TODO: Implementer le decodeur
-        return ch
+        mat = np.reshape(ch, (self.fleetSize, self.nbRides))
+
+        carPref = [[]]*self.fleetSize
+        ridePref = np.zeros(self.nbRides)
+        for car in range(self.fleetSize):
+            carPref[car] = np.flip(np.argsort(mat[car]),0)
+
+        for ride in range(self.nbRides):
+            ridePref[ride] = np.argmax(mat[:,ride])
+
+        solution = []
+        for car in range(self.fleetSize):
+            solution.append(carPref[car][ridePref[carPref[car]] == car])
+
+        return solution
 
     def score(self, solution):
         #TODO: Implementer la fonction de score
+        
         return np.mean(solution)
 
     def mate(self, ch1, ch2):
@@ -64,13 +81,16 @@ class BRKGA_solver:
         return (gen[0], score)
     
 
-solver = BRKGA_solver(0, 1000, 0.7, 0.1, 0.2, (100,))
+solver = BRKGA_solver(2, 3, 1000, 0.7, 0.1, 0.2, (100,))
+
+solver.decoder(np.random.random(6))
+
+'''
 if __name__ == "__main__":
     res = solver.computeGenerations(1000)
     print("Meilleur chromosome: ", res[0])
     print("Score: ", res[1])
-
-
+'''
     
 
     
