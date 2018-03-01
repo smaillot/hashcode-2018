@@ -3,24 +3,29 @@ from solution import generate_solution
 import numpy as np
 
 def distance(depart, arrivee):
-    difference = arivee - depart
+    difference = arrivee - depart
     return np.abs(difference[0]) + np.abs(difference[1])
 
 class Vehicle:
     def __init__(self, depart, arrivee):
         self.depart = depart
         self.arrivee = arrivee
-        self.time_left = d
-    def time_left
+        self.time_left = distance(depart, arrivee)
+    def maj(self):
+        if self.time_left != 0:
+            self.time_left -= 1
+    
 
 class Loaded_input:
-    def __init__(self, args):
-        self.args = args
-        self.list_vehicles = self.F * [[0, 0]]
-
-    def simulate_one_step(self, rides):
-
-
+    def __init__(self, params, array):
+        self.rows = params[0]
+        self.cols = params[1]
+        self.number_vehicles = params[2]
+        self.rides = params[3]
+        self.bonus = params[4]
+        self.steps = params[5]
+        self.rides = array
+        self.list_vehicles = self.number_vehicles * [[0, 0]]
 
     def generate_solution(self, seed):
         
