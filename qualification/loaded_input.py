@@ -30,10 +30,12 @@ class Ride:
 class Vehicle:
     def __init__(self, rides):
         self.rides = rides
-        self.moving = True
-    def maj(self):
-        if self.time_left != 0:
-            self.time_left -= 1
+        
+    def set_arrival_rides(self):
+        position_car = [0, 0]
+        for ride in rides:
+
+
     
     
 
@@ -48,8 +50,8 @@ class Loaded_input:
         self.rides = array
         self.list_vehicles = self.number_vehicles * [[0, 0]]
 
-    def simulate_one_step(rides):
-        for ride in rides:
+    def compute_score(self, rides):
+
 
 
     def generate_solution(self, seed):
