@@ -60,7 +60,7 @@ if __name__ == '__main__':
     display(solution, loaded_input)
 
     # Compute score and display
-    score = compute_score(solution) * valid
+    score = compute_score(loaded_input, solution) * valid
     print_score(score, loaded_input, end - start)
     
     # Writing to output
