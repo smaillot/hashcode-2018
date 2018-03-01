@@ -6,14 +6,35 @@ def distance(depart, arrivee):
     difference = arrivee - depart
     return np.abs(difference[0]) + np.abs(difference[1])
 
-class Vehicle:
-    def __init__(self, depart, arrivee):
+class Ride:
+    def __init__(self, depart, arrivee, earliest_start, latest_finish, B):
         self.depart = depart
         self.arrivee = arrivee
-        self.time_left = distance(depart, arrivee)
+        self.earliest_start = earliest_start
+        self.latest_finish = latest_finish
+        self.length = distance(depart, arivee)
+        self.bonus = bonus
+        # Time when ride is started
+        self.time_started = 10**9
+        # Timde when ride is over
+        self.time_finished = 10**9
+    def score(self):
+        return (self.time_finished <= self.latest_finish) * (self.length + self.B * (self.time_started == self.earliest_start))
+    
+    def set_schedule(self, time_started):
+        self.time_started = time_started
+        self.time_finished = self.time_started + self.length
+    
+    
+
+class Vehicle:
+    def __init__(self, rides):
+        self.rides = rides
+        self.moving = True
     def maj(self):
         if self.time_left != 0:
             self.time_left -= 1
+    
     
 
 class Loaded_input:
@@ -26,6 +47,10 @@ class Loaded_input:
         self.steps = params[5]
         self.rides = array
         self.list_vehicles = self.number_vehicles * [[0, 0]]
+
+    def simulate_one_step(rides):
+        for ride in rides:
+
 
     def generate_solution(self, seed):
         
