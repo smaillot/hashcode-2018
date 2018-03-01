@@ -2,10 +2,6 @@ from IO import *
 from solution import generate_solution
 import numpy as np
 
-def distance(depart, arrivee):
-    difference = arrivee - depart
-    return np.abs(difference[0]) + np.abs(difference[1])
-
 class Vehicle:
     def __init__(self, depart, arrivee):
         self.depart = depart

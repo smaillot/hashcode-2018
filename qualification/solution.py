@@ -10,3 +10,4 @@ def generate_solution(loaded_input, x):
     s = [[0]]
                
     return s
+
